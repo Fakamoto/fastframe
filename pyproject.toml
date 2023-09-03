@@ -1,0 +1,58 @@
+[project]
+name = "fastframe"
+description = "A CLI Framework for FastAPI"
+readme = "README.md"
+version = "0.0.1"
+authors = [{ name = "Facundo Goiriz", email = "facundogoiriz@gmail.com" }]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.10",
+]
+keywords = ["CLI", "FastAPI", "framework"]
+requires-python = ">=3.8, <4"
+dependencies = [
+    "typer[all]~=0.9.0",
+    "pydantic[email]~=1.10.9",
+]
+
+[project.scripts]
+ff = "fastframe.main:app"
+fastframe = "fastframe.main:app"
+
+
+
+[project.optional-dependencies]
+test = [
+    "pytest>=7.1,<8.0",
+    "pytest-cov>=3.0,<4",
+    "coverage>=6.4,<7",
+    "black>=22.6,<23",
+]
+
+[tool.setuptools]
+packages = ["fastframe"]
+
+[tool.black]
+line-length = 88
+exclude = '''
+/(
+    \.git
+  | \.mypy_cache
+  | \.tox
+  | venv
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+)/
+'''
+
+[tool.isort]
+profile = "black"
+
+[build-system]
+build-backend = "flit_core.buildapi"
+requires = ["flit_core >=3.2,<4"]
